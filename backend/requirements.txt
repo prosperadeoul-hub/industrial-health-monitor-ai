@@ -1,0 +1,15 @@
+asgiref==3.12.1
+Django==5.2.18
+djangorestframework==3.18.3
+mysqlclient==2.3.0
+python-dotenv==1.2.4
+sqlparse==0.6.0
+typing_extensions==4.16.0
+tzdata==2026.5
+django-filter==26.1
+drf-spectacular==0.30.0
+pytest==9.1.1
+pytest-django==4.14.0
+factory-boy==3.3.3
+ruff==0.17.1
+bandit==1.9.4
