@@ -1,4 +1,6 @@
+# ruff: noqa: RUF012
 import uuid
+from typing import ClassVar
 
 from django.db import models
 
@@ -20,7 +22,7 @@ class SystemComponent(models.Model):
 
     class Meta:
         ordering = ['name']
-        indexes = [models.Index(fields=['component_type', 'is_active'])]
+        indexes: ClassVar[list] = [models.Index(fields=['component_type', 'is_active'])]
 
     def __str__(self) -> str:
         return self.name
@@ -46,7 +48,7 @@ class MetricRecord(models.Model):
 
     class Meta:
         ordering = ['-measured_at']
-        indexes = [
+        indexes: ClassVar[list] = [
             models.Index(fields=['component', 'metric_type', 'measured_at']),
             models.Index(fields=['measured_at']),
         ]
@@ -72,7 +74,7 @@ class HealthCheck(models.Model):
 
     class Meta:
         ordering = ['-checked_at']
-        indexes = [models.Index(fields=['component', 'checked_at'])]
+        indexes: ClassVar[list] = [models.Index(fields=['component', 'checked_at'])]
 
     def __str__(self) -> str:
         return f'{self.component.name} {self.status}'
@@ -101,7 +103,7 @@ class Alert(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        indexes = [models.Index(fields=['component', 'status', 'severity'])]
+        indexes: ClassVar[list] = [models.Index(fields=['component', 'status', 'severity'])]
 
     def __str__(self) -> str:
         return f'{self.component.name} {self.severity} {self.status}'
@@ -128,7 +130,7 @@ class DiagnosticReport(models.Model):
 
     class Meta:
         ordering = ['-generated_at', '-id']
-        indexes = [models.Index(fields=['component', 'status'])]
+        indexes: ClassVar[list] = [models.Index(fields=['component', 'status'])]
 
     def __str__(self) -> str:
         return f'{self.component.name} diagnostic {self.status}'

@@ -8,7 +8,7 @@ def generate_diagnostic(health_check, component) -> dict:
     try:
         raw = client.complete(prompt)
         data = validate_output(raw)
-    except Exception:
+    except Exception:  # noqa: BLE001
         data = {
             'summary': 'Diagnostic unavailable',
             'findings': [],
